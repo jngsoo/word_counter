@@ -5,18 +5,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+    /* 아래 textarea용 */
+    @import url(https://fonts.googleapis.com/css?family=Roboto);
+    @import url(https://fonts.googleapis.com/css?family=Handlee);
+
+body {
+    margin: 40px 0 0;
+    background: #91D1D3;
+    font-family: 'Roboto', sans-serif;
+}
+
+.paper {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    min-width: 400px;
+    height: 480px;
+    margin: 0 auto;
+    background: #fafafa;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.3);
+    overflow: hidden;
+}
+.paper:before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; left: 0;
+    width: 60px;
+    background: radial-gradient(#575450 6px, transparent 7px) repeat-y;
+    background-size: 30px 30px;
+    border-right: 3px solid #D44147;
+    box-sizing: border-box;
+}
+
+.paper-content {
+    position: absolute;
+    top: 30px; right: 0; bottom: 30px; left: 60px;
+    background: linear-gradient(transparent, transparent 28px, #91D1D3 28px);
+    background-size: 30px 30px;
+}
+
+.paper-content textarea {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    line-height: 30px;
+    padding: 0 10px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: mediumblue;
+    font-family: 'Handlee', cursive;
+    font-weight: bold;
+    font-size: 18px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(0,0,0,.6);
+}
+
+    
+/* 아래 버튼용 */
+
+.button1 {
+  background-color: rgb(152, 158, 152); /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+    </style>
+    <script>
+     /* textarea용 */
+     $(function() {
+    $( "#button" ).click(function() {
+        $( "#button" ).addClass( "onclic", 250, validate);
+    });
+
+    function validate() {
+        setTimeout(function() {
+        $( "#button" ).removeClass( "onclic" );
+        $( "#button" ).addClass( "validate", 450, callback );
+        }, 2250 );
+    }
+        function callback() {
+        setTimeout(function() {
+            $( "#button" ).removeClass( "validate" );
+        }, 1250 );
+        }
+    });
+
+    // 버튼용
+   
+    </script>
 </head>
 <body>
-    <br><center><a href="{%url 'about'%}">About</a></center>
-    <br><center><h1>Word Count!</h1></center>
+    <br><center><h1 style="color: #fafafa">Word Count!</h1></center><br>
 
-    <center><form action="{%url 'result'%}">
-        <textarea cols="40" rows = "10" name = "fulltext"></textarea>
+    <form action="{%url 'result'%}">
+        <div class="paper">
+                <div class="paper-content">
+                    <textarea autofocus name = "fulltext"></textarea>
+                </div>
+        </div>
         <br>
-        <input type="submit" value="count"> 
 
-
-    </form></center>
-    
+        <!--제출 버튼-->
+        <center>
+            <input type="submit" class="button1" value="제출">
+        </center>
+    </form>
+    <br><center><a href="{%url 'about'%}"><h4 style="color: aliceblue">About</h2></a></center>
 </body>
 </html>
