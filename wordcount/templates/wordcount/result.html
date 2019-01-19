@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <center><h1>총 단어 : {{total}}</h1>
+    <a href="{%url 'home'%}"> 다시하기 </a>
+    <br>
+    <h2> 입력한 텍스트 : </h2>
+    {{full}}
+    <h2>단어 카운트 : </h2>
+    <!-- {% for word,numOfWord in wordDict %}
+    {{word}} : {{numOfWord}} <br>
+    {% endfor %} -->
+    {% for result in wordDict %}
+        {% for res in result %}
+            {{res}} 
+        {% endfor %}
+    <br>
+    {%endfor%}
+    </center>       
+</body>
+</html>
